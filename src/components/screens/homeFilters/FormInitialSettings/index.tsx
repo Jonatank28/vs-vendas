@@ -4,6 +4,7 @@ import Controller from './Controller';
 import { Pressable, Text, TouchableOpacity, View } from 'react-native';
 import CustomSelect from '@/src/components/forms/CustomSelect';
 import { Ionicons } from "@expo/vector-icons";
+import RNPickerSelect from 'react-native-picker-select';
 
 const dataEnterprise = [
   { label: '1 - Homologado Hidrelec', value: '1' },
@@ -51,7 +52,7 @@ const FormHomeFilters = () => {
 
   return (
     <View className='flex flex-col gap-2'>
-      <CustomSelect data={dataEnterprise} label='Empresa' placeholder='Selecione a empresa' form={c.form} name="enterprise" />
+      {/* <CustomSelect data={dataEnterprise} label='Empresa' placeholder='Selecione a empresa' form={c.form} name="enterprise" />
       <CustomSelect data={dataRegion} label='Região' placeholder='Selecione a região' form={c.form} name="region" />
       <CustomSelect data={dataState} label='Estado' placeholder='Selecione o estado' form={c.form} name="state" />
       <View>
@@ -73,7 +74,23 @@ const FormHomeFilters = () => {
             {c.form.formState.errors['city'].message as string}
           </Text>
         )}
-      </View>
+      </View> */}
+      <RNPickerSelect
+        onValueChange={(value) => console.log(value)}
+        items={[
+          { label: 'Football', value: 'football' },
+          { label: 'Baseball', value: 'baseball' },
+          { label: 'Hockey', value: 'hockey' },
+        ]}
+      />
+      <RNPickerSelect
+        onValueChange={(value) => console.log(value)}
+        items={[
+          { label: 'Football', value: 'football' },
+          { label: 'Baseball', value: 'baseball' },
+          { label: 'Hockey', value: 'hockey' },
+        ]}
+      />
       <DefaultButtonAction title="Carregar dados" onPress={c.form.handleSubmit(c.onSubmit)} />
     </View>
   );

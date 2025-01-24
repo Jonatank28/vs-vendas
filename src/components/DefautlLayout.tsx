@@ -1,8 +1,8 @@
-import { View, SafeAreaView, Image } from "react-native";
+import { View, Image } from "react-native";
 
 const DefaultLayout = ({ children, logo = true }: { children: React.ReactNode, logo?: boolean }) => {
   return (
-    <SafeAreaView className="px-4 flex-1 pt-2 bg-background">
+    <View className="px-4 flex-1 pt-2 bg-background">
       <View className="pb-4">
         {logo && (
           <View>
@@ -14,7 +14,7 @@ const DefaultLayout = ({ children, logo = true }: { children: React.ReactNode, l
         )}
       </View>
       {children}
-    </SafeAreaView>
+    </View>
   );
 };
 
