@@ -20,9 +20,7 @@ const Controller = () => {
   };
 
   const handleOpenModalSearchCity = () => {
-    console.log("🚀  handleOpenModalSearchCity");
-    form.setValue('city', 'Chapeco - SC');
-    form.trigger('city');
+    form.setValue('city', 'São Paulo - SP', { shouldValidate: true });
   }
 
   return {

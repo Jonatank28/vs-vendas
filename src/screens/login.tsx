@@ -4,7 +4,6 @@ import {
   Pressable,
   TouchableOpacity,
   View,
-  Platform
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -12,8 +11,6 @@ import FormLogin from "../components/screens/login/FormLogin";
 
 
 const LoginPage = () => {
-  console.log("🚀  Platform", Platform.OS);
-
   return (
     <>
       <View className="flex-1 justify-center bg-background relative" style={{ padding: 20 }}>

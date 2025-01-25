@@ -1,7 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { Dropdown } from 'react-native-element-dropdown';
 import { UseFormReturn } from "react-hook-form";
-import { Picker } from '@react-native-picker/picker';
+import Controller from './Controller';
+import { styles } from './styles';
 
 interface Props {
   data: {
@@ -12,31 +14,36 @@ interface Props {
   name: string
   form: UseFormReturn<any>;
   placeholder?: string
-  defaultValue?: string
 }
 
-const CustomSelect = ({ data, placeholder, label, defaultValue, name, form }: Props) => {
-  const [value, setValue] = React.useState<string | null>(defaultValue ?? null);
+const CustomSelect = ({ data, placeholder, label, name, form }: Props) => {
+  const c = Controller()
 
   return (
     <View>
       <Text className="text-input-text pb-1">{label}</Text>
-      <View className="p-0 bg-input-bg rounded-xl">
-        <Picker
-          mode='dialog'
-          selectedValue={value}
-          onValueChange={(itemValue) => {
-            form.setValue(name, itemValue);
-            form.trigger(name);
-            setValue(itemValue);
+      <View className="bg-input-bg rounded-xl">
+        <Dropdown
+          style={[styles.dropdown]}
+          placeholderStyle={styles.placeholderStyle}
+          selectedTextStyle={styles.selectedTextStyle}
+          inputSearchStyle={styles.inputSearchStyle}
+          containerStyle={styles.dropdownMenuStyle}
+          data={data}
+          search
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={!c.isFocus ? placeholder : ''}
+          searchPlaceholder="Buscar..."
+          value={form.getValues(name)}
+          onFocus={() => c.setIsFocus(true)}
+          onBlur={() => c.setIsFocus(false)}
+          onChange={(item) => {
+            const id = item.value
+            c.onChangeValue(id, name, form)
           }}
-          enabled
-        >
-          {!value && <Picker.Item label={placeholder} value={null} />}
-          {data.map((scale) => (
-            <Picker.Item key={scale.value} label={scale.label} value={scale.value} />
-          ))}
-        </Picker>
+        />
       </View>
       {form.formState.errors[name]?.message && (
         <Text className="text-danger-light">
@@ -45,7 +52,6 @@ const CustomSelect = ({ data, placeholder, label, defaultValue, name, form }: Pr
       )}
     </View>
   );
-
 };
 
 export default CustomSelect
