@@ -4,6 +4,7 @@ import { Dropdown } from 'react-native-element-dropdown';
 import { UseFormReturn } from "react-hook-form";
 import Controller from './Controller';
 import { styles } from './styles';
+import { cn } from '@/src/utils/utils';
 
 interface Props {
   data: {
@@ -14,15 +15,17 @@ interface Props {
   name: string
   form: UseFormReturn<any>;
   placeholder?: string
+  onChange?: (id: string) => void
+  disable?: boolean
 }
 
-const CustomSelect = ({ data, placeholder, label, name, form }: Props) => {
+const CustomSelect = ({ data, placeholder, label, name, form, onChange, disable }: Props) => {
   const c = Controller()
 
   return (
     <View>
       <Text className="text-input-text pb-1">{label}</Text>
-      <View className="bg-input-bg rounded-xl">
+      <View className={cn(`bg-input-bg rounded-xl ${disable && 'opacity-30'}`)}>
         <Dropdown
           style={[styles.dropdown]}
           placeholderStyle={styles.placeholderStyle}
@@ -30,6 +33,7 @@ const CustomSelect = ({ data, placeholder, label, name, form }: Props) => {
           inputSearchStyle={styles.inputSearchStyle}
           containerStyle={styles.dropdownMenuStyle}
           data={data}
+          disable={disable}
           search
           maxHeight={300}
           labelField="label"
@@ -42,6 +46,7 @@ const CustomSelect = ({ data, placeholder, label, name, form }: Props) => {
           onChange={(item) => {
             const id = item.value
             c.onChangeValue(id, name, form)
+            onChange && onChange(id)
           }}
         />
       </View>

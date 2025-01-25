@@ -1,9 +1,12 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import React from "react";
 import { z } from "zod";
 import { schema } from "./shema";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+const cyties: { [key: string]: { label: string; value: string }[] } = require('@/src/data/citiesByState.json');
 
 const Controller = () => {
+  const [dataCityes, setDataCityes] = React.useState<{ label: string; value: string }[]>([]);
 
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
@@ -19,15 +22,17 @@ const Controller = () => {
     console.log("🚀  data", data);
   };
 
-  const handleOpenModalSearchCity = () => {
-    form.setValue('city', 'São Paulo - SP', { shouldValidate: true });
-  }
+  const handleSelectCitiesState = async (state: string) => {
+    setDataCityes(cyties[state] || []);
+    form.setValue("city", "", { shouldValidate: true });
+  };
 
   return {
     form,
+    dataCityes,
+    handleSelectCitiesState,
     onSubmit,
-    handleOpenModalSearchCity
-  }
+  };
 };
 
 export default Controller;
