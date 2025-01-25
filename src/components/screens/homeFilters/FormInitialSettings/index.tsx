@@ -4,32 +4,20 @@ import CustomSelect from '@/src/components/forms/CustomSelect';
 import Controller from './Controller';
 import dataStates from '@/src/data/states.json';
 
-const dataEnterprise = [
-  { label: '1 - Homologado Hidrelec', value: '1' },
-  { label: 'Transforma 2', value: '2' },
-  { label: 'SEIN ÇAAA', value: '3' },
-]
-
-const dataRegion = [
-  { label: 'Centro', value: '1' },
-  { label: 'Norte', value: '2' },
-]
-
-
 const FormHomeFilters = () => {
   const c = Controller();
 
   return (
     <View className='flex-col gap-3'>
       <CustomSelect
-        data={dataEnterprise}
+        data={c.dataEnterprise}
         placeholder='Selecione uma empresa'
         label="Empresa"
         name="enterprise"
         form={c.form}
       />
       <CustomSelect
-        data={dataRegion}
+        data={c.dataRegion}
         placeholder='Selecione uma regiao'
         label="Região"
         name="region"
