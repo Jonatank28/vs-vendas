@@ -1,6 +1,8 @@
 import React from "react";
 import { Stack } from "expo-router";
 import Toast from "react-native-toast-message";
+import { enableScreens } from "react-native-screens";
+enableScreens
 
 const PublicLayout = () => {
   return (
@@ -14,3 +16,4 @@ const PublicLayout = () => {
 };
 
 export default PublicLayout;
+

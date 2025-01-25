@@ -44,7 +44,7 @@ const FormHomeFilters = () => {
         form={c.form}
       />
       <DefaultButtonAction
-        title="Carregar dados"
+        title={c.isLoading ? 'Carregando dados ...' : 'Carregar dados'}
         onPress={c.form.handleSubmit(c.onSubmit)}
       />
     </View>

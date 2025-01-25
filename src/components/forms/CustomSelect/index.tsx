@@ -38,6 +38,7 @@ const CustomSelect = ({ data, placeholder, label, name, form, onChange, disable 
           maxHeight={300}
           labelField="label"
           valueField="value"
+          showsVerticalScrollIndicator={false}
           placeholder={!c.isFocus ? placeholder : ''}
           searchPlaceholder="Buscar..."
           value={form.getValues(name)}

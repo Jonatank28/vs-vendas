@@ -1,5 +1,4 @@
 import { type SQLiteDatabase } from "expo-sqlite";
-import * as SQLite from "expo-sqlite";
 import { tables } from "./tables";
 
 const dbName = "vendas";

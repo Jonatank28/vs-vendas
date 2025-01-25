@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { View, Text, BackHandler } from 'react-native';
 import { useFocusEffect } from 'expo-router';
+import DefaultLayout from '../components/DefautlLayout';
 
 const HomePage = () => {
 
@@ -18,9 +19,9 @@ const HomePage = () => {
   // );
 
   return (
-    <View>
+    <DefaultLayout>
       <Text>HomePage</Text>
-    </View>
+    </DefaultLayout>
   );
 };
 

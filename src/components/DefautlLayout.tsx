@@ -1,20 +1,11 @@
-import { View, Image } from "react-native";
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const DefaultLayout = ({ children, logo = true }: { children: React.ReactNode, logo?: boolean }) => {
+const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <View className="px-4 flex-1 pt-2 bg-background">
-      <View className="pb-4">
-        {logo && (
-          <View>
-            <Image
-              className="w-[120px] h-4 md:w-[140px] md:h-5"
-              source={require("@/src/assets/images/visionlogo.png")}
-            />
-          </View>
-        )}
-      </View>
+    <SafeAreaView className="px-4 flex-1 bg-background">
       {children}
-    </View>
+    </SafeAreaView>
   );
 };
 

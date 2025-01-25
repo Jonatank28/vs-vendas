@@ -4,7 +4,7 @@ import FormHomeFilters from '../components/screens/homeFilters/FormInitialSettin
 
 const HomeFiltersPage = () => {
   return (
-    <DefaultLayout logo={false}>
+    <DefaultLayout>
       <FormHomeFilters />
     </DefaultLayout>
   );

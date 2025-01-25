@@ -6,7 +6,7 @@ import FormInitialSettings from "../components/screens/InitialSettings/FormIniti
 const InitialSettingsPage = () => {
 
   return (
-    <DefaultLayout logo={false}>
+    <DefaultLayout>
       <FormInitialSettings />
       <View className="absolute bottom-2 right-2">
         <Text className="text-BLACK/60">

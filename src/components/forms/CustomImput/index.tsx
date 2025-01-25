@@ -54,6 +54,7 @@ const CustomInput = forwardRef<TextInput, Props>(
                 disableFullscreenUI
                 keyboardType={keyboardType}
                 onChangeText={onChange}
+                returnKeyType="done"
                 value={value}
                 editable={!disabled}
                 multiline={multiline}
