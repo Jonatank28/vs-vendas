@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
-import { View, Text, BackHandler, TouchableOpacity, Image, Button } from 'react-native';
+import { View, Text, BackHandler, Pressable } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
-import DefaultLayout from '../components/DefautlLayout';
 
 const HomePage = () => {
 
@@ -19,9 +18,26 @@ const HomePage = () => {
   );
 
   return (
-    <DefaultLayout>
-      <Button title='Configurações' onPress={() => router.push("/(auth)/settings")} />
-    </DefaultLayout>
+    <View className='flex-1 flex-col gap-4  p-2'>
+      <Pressable className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'>
+        <Text>Iniciar jornada</Text>
+      </Pressable>
+      <Pressable className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'>
+        <Text>Novo</Text>
+      </Pressable>
+      <Pressable
+        onPress={() => router.push("/(auth)/test")}
+        className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'
+      >
+        <Text>Test</Text>
+      </Pressable>
+      <Pressable
+        onPress={() => router.push("/(auth)/settings")}
+        className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'
+      >
+        <Text>Configurações</Text>
+      </Pressable>
+    </View>
   );
 };
 
