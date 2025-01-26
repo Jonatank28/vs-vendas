@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Image,
   Pressable,
@@ -12,6 +12,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const LoginPage = () => {
+  const [client, setClient] = React.useState(false);
+
+  useEffect(() => {
+    setClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (!client) return;
+    router.push("/(auth)/home")
+  }, [client])
+
   return (
     <SafeAreaView className="flex-1 justify-center bg-background relative p-5">
       {/* Logo */}
