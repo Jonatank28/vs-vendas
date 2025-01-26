@@ -18,7 +18,7 @@ const HomePage = () => {
   );
 
   return (
-    <View className='flex-1 flex-col gap-4  p-2'>
+    <View className='flex-1 flex-col gap-4 p-2 pt-10'>
       <Pressable className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'>
         <Text>Iniciar jornada</Text>
       </Pressable>
@@ -26,7 +26,6 @@ const HomePage = () => {
         <Text>Novo</Text>
       </Pressable>
       <Pressable
-        onPress={() => router.push("/(auth)/test")}
         className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'
       >
         <Text>Test</Text>

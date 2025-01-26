@@ -6,7 +6,7 @@ const AuthLayout = () => {
   return (
     <>
       <Stack screenOptions={{ headerShown: true }}>
-        <Stack.Screen name="home" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="settings" options={{ title: "Configurações" }} />
       </Stack>
       <Toast position="top" />
