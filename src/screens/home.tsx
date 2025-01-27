@@ -4,7 +4,8 @@ import { router, useFocusEffect } from 'expo-router';
 import { useAuth } from '../hooks/useAuth';
 
 const HomePage = () => {
-  const { logout } = useAuth()
+  const { logout, user } = useAuth()
+  console.log("🚀  user", user);
 
   // Impede que o usuário volte para a tela de login
   useFocusEffect(

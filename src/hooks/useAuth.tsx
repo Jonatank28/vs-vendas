@@ -14,6 +14,7 @@ export interface UserType {
   cd_usuario_sistema: number;
   dS_LOGIN_VSVENDAS: string;
   ds_usuario: string;
+  token: string;
 }
 
 interface AuthState {

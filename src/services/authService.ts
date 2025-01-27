@@ -21,7 +21,10 @@ class AuthService implements AuthServiceTypes {
     const res = await api(`${dynamicRoutePrefix}/util/dadosLogin`, {
       headers: { Authorization: "Basic " + dadosBase64 },
     });
-    return res.data[0];
+    return {
+      ...res.data[0],
+      token: "Basic " + dadosBase64,
+    };
   };
 }
 

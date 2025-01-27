@@ -1,17 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { z } from "zod";
 import { schema } from "./shema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useLoading from "@/src/hooks/useLoading";
 import { router } from "expo-router";
+import { api } from "@/src/utils/api";
+import { useInitialSettings } from "@/src/hooks/useInitialSettings";
+import { useAuth } from "@/src/hooks/useAuth";
 const cyties: { [key: string]: { label: string; value: string }[] } = require('@/src/data/citiesByState.json');
 
-const dataEnterprise = [
-  { label: '1 - Homologado Hidrelec', value: '1' },
-  { label: 'Transforma 2', value: '2' },
-  { label: 'SEIN ÇAAA', value: '3' },
-]
 
 const dataRegion = [
   { label: 'Centro', value: '1' },
@@ -19,8 +17,11 @@ const dataRegion = [
 ]
 
 const Controller = () => {
+  const { data } = useInitialSettings()
+  const { user } = useAuth()
   const { isLoading, startLoading, stopLoading } = useLoading()
   const [dataCityes, setDataCityes] = React.useState<{ label: string; value: string }[]>([]);
+  const [dataEnterprise, setDataEnterprise] = React.useState<{ label: string; value: string }[]>([]);
 
 
   const form = useForm<z.infer<typeof schema>>({
@@ -54,6 +55,29 @@ const Controller = () => {
     setDataCityes(cyties[state] || []);
     form.setValue("city", "", { shouldValidate: true });
   };
+
+  const getDataEnterprise = async () => {
+    try {
+      const res = api.get(`${data?.dynamicRoutePrefix}/util/empresa/listar`, {
+        headers: {
+          'Authorization': user?.token
+        }
+      })
+      const formatData = (await res).data.map((item: any) => {
+        return {
+          label: item.ds_nomefantasia,
+          value: String(item.cd_empresa),
+        }
+      })
+      setDataEnterprise(formatData)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getDataEnterprise()
+  }, []);
 
   return {
     form,

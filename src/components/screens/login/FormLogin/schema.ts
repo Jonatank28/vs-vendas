@@ -4,7 +4,7 @@ export const schema = z.object({
   username: z
     .string()
     .max(50, "O Usuário deve ter no máximo 50 caracteres")
-    .min(6, "O Usuário deve ter pelo menos 6 caracteres")
+    .min(3, "O Usuário deve ter pelo menos 3 caracteres")
     .trim(),
   password: z
     .string()
