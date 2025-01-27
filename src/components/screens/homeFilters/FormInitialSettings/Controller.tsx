@@ -42,7 +42,7 @@ const Controller = () => {
     startLoading()
     try {
       await getConfigsFilterInit()
-      router.push("/(auth)/home")
+      router.push("/(auth)")
     } catch (error) {
       console.log(error)
     } finally {

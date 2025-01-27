@@ -1,11 +1,11 @@
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View } from "react-native";
 
 const DefaultLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SafeAreaView className="px-4 flex-1 bg-background">
+    <View className="px-4 flex-1 bg-background">
       {children}
-    </SafeAreaView>
+    </View>
   );
 };
 

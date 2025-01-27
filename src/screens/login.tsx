@@ -8,7 +8,6 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import FormLogin from "../components/screens/login/FormLogin";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const LoginPage = () => {
@@ -20,11 +19,11 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!client) return;
-    router.push("/(auth)/home")
+    router.push("/(auth)")
   }, [client])
 
   return (
-    <SafeAreaView className="flex-1 justify-center bg-background relative p-5">
+    <View className="flex-1 justify-center bg-background relative p-5">
       {/* Logo */}
       <View className="absolute top-32 left-0 right-0">
         <View className="items-center">
@@ -57,7 +56,7 @@ const LoginPage = () => {
           />
         </View>
       </Pressable>
-    </SafeAreaView>
+    </View>
   );
 };
 
