@@ -11,16 +11,6 @@ import FormLogin from "../components/screens/login/FormLogin";
 
 
 const LoginPage = () => {
-  const [client, setClient] = React.useState(false);
-
-  useEffect(() => {
-    setClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (!client) return;
-    router.push("/(auth)")
-  }, [client])
 
   return (
     <View className="flex-1 justify-center bg-background relative p-5">

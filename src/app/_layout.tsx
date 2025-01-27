@@ -13,15 +13,13 @@ const RootLayout = () => {
     const db = await SQLite.openDatabaseAsync(`${dbName}`);
     await deleteTables(db);
     await createTables(db);
-  };
 
+  };
   return (
-    <>
-      <SQLiteProvider databaseName={`${dbName}.db`} onInit={onInit}>
-        <StatusBar style="dark" />
-        <Slot />
-      </SQLiteProvider>
-    </>
+    <SQLiteProvider databaseName={`${dbName}.db`} onInit={onInit}>
+      <StatusBar style="dark" />
+      <Slot />
+    </SQLiteProvider>
   );
 };
 

@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react';
 import { View, Text, BackHandler, Pressable } from 'react-native';
 import { router, useFocusEffect } from 'expo-router';
+import { useAuth } from '../hooks/useAuth';
 
 const HomePage = () => {
+  const { logout } = useAuth()
 
   // Impede que o usuário volte para a tela de login
   useFocusEffect(
@@ -18,7 +20,7 @@ const HomePage = () => {
   );
 
   return (
-    <View className='flex-1 flex-col gap-4 p-2 pt-10'>
+    <View className='flex-1 flex-col gap-4 p-2 pt-12'>
       <Pressable className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'>
         <Text>Iniciar jornada</Text>
       </Pressable>
@@ -27,8 +29,9 @@ const HomePage = () => {
       </Pressable>
       <Pressable
         className='flex-1 flex-row items-center justify-center bg-secondary rounded-xl'
+        onPress={() => logout()}
       >
-        <Text>Test</Text>
+        <Text>Sair</Text>
       </Pressable>
       <Pressable
         onPress={() => router.push("/(auth)/settings")}
