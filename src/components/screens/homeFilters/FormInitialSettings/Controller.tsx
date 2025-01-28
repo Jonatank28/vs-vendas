@@ -8,6 +8,7 @@ import { router } from "expo-router";
 import { api } from "@/src/utils/api";
 import { useInitialSettings } from "@/src/hooks/useInitialSettings";
 import { useAuth } from "@/src/hooks/useAuth";
+import { useInitialFilter } from "@/src/hooks/useInitialFilters";
 const cyties: { [key: string]: { label: string; value: string }[] } = require('@/src/data/citiesByState.json');
 
 
@@ -20,6 +21,7 @@ const Controller = () => {
   const { data } = useInitialSettings()
   const { user } = useAuth()
   const { isLoading, startLoading, stopLoading } = useLoading()
+  const { setData } = useInitialFilter()
   const [dataCityes, setDataCityes] = React.useState<{ label: string; value: string }[]>([]);
   const [dataEnterprise, setDataEnterprise] = React.useState<{ label: string; value: string }[]>([]);
 
@@ -42,6 +44,7 @@ const Controller = () => {
   const onSubmit = async (data: z.infer<typeof schema>) => {
     startLoading()
     try {
+      setData(data)
       await getConfigsFilterInit()
       router.push("/(auth)")
     } catch (error) {

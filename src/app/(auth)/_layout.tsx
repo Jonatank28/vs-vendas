@@ -16,12 +16,12 @@ const AuthLayout = () => {
     }, 1000)
   }, [])
 
-  // useEffect(() => {
-  //   if (loading) return
-  //   if (!user) {
-  //     router.push("/(public)")
-  //   }
-  // }, [loading])
+  useEffect(() => {
+    if (loading) return
+    if (!user) {
+      router.push("/(public)")
+    }
+  }, [loading])
 
   return (
     <>
